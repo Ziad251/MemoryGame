@@ -70,10 +70,14 @@ const urlArray = [
   url: "https://ziad251-memorygame.s3.eu-central-1.amazonaws.com/9.png",
   }
 ];
+let shuffled = urlArray
+  .map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout urls={urlArray}/>
+    <Layout urls={shuffled}/>
   </React.StrictMode>,
   document.getElementById('root')
 )
