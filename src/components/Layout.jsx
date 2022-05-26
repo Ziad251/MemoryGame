@@ -29,6 +29,8 @@ const {useState } = React;
     setSelectedCard(initialCard);
   }
   const urls = props.urls;
+	let shuffled = urls.map(value => ({ value, sort: Math.random() })) .sort((a, b) => a.sort - b.sort) .map(({ value }) => value)
+	
   return (
     <div className="parent">
     <h2>
@@ -41,7 +43,7 @@ const {useState } = React;
       </div>
       <h5>Get points by clicking on an image but don't click on any more than once!</h5>  
       <div className="container">
-      {urls.map((url) => {
+      {shuffled.map((url) => {
         return <Card title={url.title} imgUrl ={url.url} click={handleClick}/>;
       })}
 
